@@ -46,6 +46,8 @@
 
 :root {
     --primary-bg-color: #080f1a;
+    --secondary-bg-color: #0d1626;
+    --tertiary-bg-color: #112238;
     --primary-gradient-color: #1b283e;
     --secondary-gradient-color: #12162a;
     --primary-color: #2487c9;
@@ -60,12 +62,13 @@
     --font-color-yellow: #ffc964;
     --font-color-blue: #069fe6;
     
+    --tertiary-bg-color-rgb: 14, 26, 46;
     --primary-color-rgb: 36, 135, 201;
     --secondary-color-rgb: 32, 68, 117;
     --tertiary-color-rgb: 6, 159, 230;
     --error-color-rgb: 235, 74, 29;
     --correct-color-rgb: 3, 245, 136;
-    
+    --font-color-yellow-rgb: 255, 201, 100;
 
     --stripe-top: repeating-linear-gradient(
         90deg,
@@ -237,10 +240,15 @@ label {
 }
 
 .label-design {
-    border-width: 1px;
-    border-style: solid;
-    border-image: linear-gradient(to right, var(--secondary-color)20% , transparent, var(--secondary-color)80% ) 1;
-    background-image: -moz-linear-gradient(to right, var(--primary-gradient-color)10%, transparent 30%,transparent 70%,var(--primary-gradient-color)90%);
+    background: rgba(36,135,201,0.04);
+    border: 1px solid rgba(36,135,201,0.12);
+    border-image: linear-gradient(
+        to right,
+        rgba(var(--primary-color-rgb), 0.25) 20%,
+        transparent 50%,
+        rgba(var(--primary-color-rgb), 0.25) 80%
+    ) 1;
+    margin-bottom: 2px;
 }
 
 /* Hide the native radio button */
@@ -253,7 +261,6 @@ label {
     height: 0;
 }
 
-/* The label itself acts as the clickable row — add a left padding for the custom dot */
 .label-for-answer {
     position: relative;
     /* make room for the custom bullet */
@@ -263,7 +270,7 @@ label {
     align-items: center;
 }
 
-/* The custom bullet — using ::before on the label */
+/* The custom bullet */
 .label-for-answer::before {
     content: "";
     position: absolute;
@@ -398,7 +405,7 @@ ul {
 }
 
 .block1 {
-    background: var(--primary-bg-color);
+    background: var(--secondary-bg-color);
     border: 1px solid rgba(36,135,201,0.2);
     margin-bottom: 6px;
 }
@@ -409,7 +416,7 @@ ul {
 }
 
 .block1-inner {
-    padding: 12px 14px;
+    padding: 1rem 0.9rem;
     background: var(--header-bg-gradient);
     display: flex;
     flex-direction: column;
@@ -429,8 +436,8 @@ ul {
 }
 
 .block1-sub {
-    font-size: 0.55rem;
-    color: rgba(36,135,201,0.35);
+    font-size: 0.7rem;
+    color: rgba(var(--primary-color-rgb), 0.4);
     letter-spacing: 0.18em;
     text-transform: uppercase;
     text-align: center;
@@ -443,14 +450,23 @@ ul {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 4px 0;
-    border-top: 1px solid rgba(36,135,201,0.1);
+    padding: 1rem 1rem 0rem 1rem;
+    border-top: 1px solid rgba(var(--primary-color-rgb), 0.1);
+}
+
+#indexQuestion {
+    flex: 1;
+    text-align: right;
+    font-size: var(--font-size-xsm);
+    font-weight: 400;
+    color: rgba(var(--primary-color-rgb), 0.75);
+    letter-spacing: 0.05em;
 }
 
 .block1-btn {
     font-size: var(--font-size-xsm);
     color: var(--primary-color);
-    border: 1px solid rgba(36,135,201,0.3);
+    border: 1px solid rgba(var(--primary-color-rgb), 0.3);
     padding: 0.3rem 0.75rem;
     background: transparent;
     letter-spacing: 0.1em;
@@ -473,9 +489,9 @@ ul {
 
 #questionBlock {
     display: none;
-    background: var(--primary-bg-color);
+    background: var(--secondary-bg-color);
     background-image: var(--header-bg-gradient);
-    border: 1px solid rgba(36,135,201,0.2);
+    border: 1px solid rgba(var(--primary-color-rgb), 0.3);
     position: relative;
 }
 
@@ -519,7 +535,7 @@ ul {
 }
 
 .question-bar-text {
-    font-size: 0.65rem;
+    font-size: 0.7rem;
     letter-spacing: 0.18em;
     text-transform: uppercase;
     font-weight: 500;
@@ -536,8 +552,8 @@ ul {
 }
 
 .question-bar-meta {
-    font-size: 0.5rem;
-    color: rgba(255,201,100,0.2);
+    font-size: 0.65rem;
+    color: rgba(var(--font-color-yellow-rgb), 0.4);
     letter-spacing: 0.12em;
     text-transform: uppercase;
     font-family: var(--font-primary-family);
@@ -553,11 +569,11 @@ ul {
     margin-bottom: 0.5rem;
 }
 
-.answer-area .label-for-answer {
+/* .answer-area .label-for-answer {
     background: rgba(36,135,201,0.04);
     border: 1px solid rgba(36,135,201,0.12);
     margin-bottom: 2px;
-}
+} */
 
 .stargate-img {
     position: absolute;
@@ -571,10 +587,16 @@ ul {
 }
 
 .quiz-container {
-    background: #060d18;
-    border-left: 2px solid rgba(36,135,201,0.4);
-    border-right: 2px solid rgba(36,135,201,0.4);
+    background: radial-gradient(
+        ellipse 80% 65% at center,
+        rgba(var(--tertiary-bg-color-rgb), 0.5) 0%,
+        var(--tertiary-bg-color) 25%,
+        var(--primary-bg-color) 100%
+    );
+    border-left: 2px solid rgba(var(--primary-color-rgb), 0.4);
+    border-right: 2px solid rgba(var(--primary-color-rgb), 0.4);
     padding: 8px;
+    position: relative;
 }
 
 .quiz-container-top {
@@ -585,7 +607,7 @@ ul {
 .glyph-block {
     width: 4rem;
     aspect-ratio: 1;
-    background-color: var(--primary-bg-color);
+    background-color: var(--secondary-bg-color);
     border: 1px solid var(--primary-color);
     display: flex;
     justify-content: center;
