@@ -1,53 +1,8 @@
-/* :root {
-    --primary-bg-color: #111e3b;
-    --secondary-bg-color: #30408f;
-    --primary-color: #137cc1;
-    --secondary-color: #204475;
-    --tertiary-color: #0e274e;
-    --primary-gradient-color:#1b283e;
-    --secondary-gradient-color: #12162a;
-    --primary-bg-gradient-color: #30408f;
-    --secondary-bg-gradient-color: #1c1c2c;
-    --font-color-light: #a6cbe7;
-    --font-color-dark: #404040;
-    --font-color-yellow: #ffc964;
-    --font-color-blue: #069fe6;
-    --error-color: #ff2a0e;
-    --correct-color: #33cf1f;
-    --score-color: #f89e0e;
-    --correct-glow: #00dca1;
-    --incorrect-glow: #f38226;
-
-    --bg-gradient: radial-gradient(
-        ellipse 55% 75% at center top,
-        rgba(36, 135, 201, 0.2) 0%,
-        rgba(36, 135, 201, 0.1) 40%,
-        rgba(36, 135, 201, 0.05) 70%,
-        transparent 100%
-    );
-
-    --bg-gradient-left-right: linear-gradient(
-        to right,
-        rgba(11, 70, 109, 0.5) 15%,
-        transparent 75%
-    );
-
-    --font-size-xxs: clamp(0.8rem, 1vw, 0.9rem);
-    --font-size-xsm: clamp(0.85rem, 1.3vw, 0.95rem);
-    --font-size-sm: clamp(0.8rem, 1.3vw, 1.05rem);
-    --font-size-md: clamp(1rem, 1.5vw, 1.1rem);
-    --font-size-lg: clamp(1.5rem, 2.5vw, 2.4rem);
-    --font-size-xl: clamp(2rem, 3vw, 2.7rem);
-
-    --font-primary-family: 'BankGothic Bold','Segoe UI', Tahoma, Verdana, sans-serif;
-    --font-secondary-family: "stargate", sans-serif;
-    --font-tertiary-family: "stargate_sg1_adress_glyphs", sans-serif;
-} */
 
 :root {
-    --primary-bg-color: #080f1a;
+    --primary-bg-color: #09121f;
     --secondary-bg-color: #0d1626;
-    --tertiary-bg-color: #112238;
+    --tertiary-bg-color: #11243d;
     --primary-gradient-color: #1b283e;
     --secondary-gradient-color: #12162a;
     --primary-color: #2487c9;
@@ -57,7 +12,7 @@
     --error-color: #ff2a0e;
     --correct-color: #33cf1f;
     
-    --font-color-light: #a6cbe7;
+    --font-color-light: #9bc0dc;
     --font-color-light2: #77a8ce;
     --font-color-yellow: #ffc964;
     --font-color-blue: #069fe6;
@@ -72,15 +27,15 @@
 
     --stripe-top: repeating-linear-gradient(
         90deg,
-        rgba(36,135,201,0.45) 0px,
-        rgba(36,135,201,0.45) 4px,
+        rgba(var(--primary-color-rgb), 0.45) 0px,
+        rgba(var(--primary-color-rgb), 0.45) 4px,
         transparent 4px,
         transparent 8px
     );
 
     --header-bg-gradient: linear-gradient(
         to bottom,
-        rgba(32,68,117,0.4),
+        rgba(var(--secondary-color-rgb), 0.4),
         transparent
     );
 
@@ -88,6 +43,13 @@
         to bottom,
         rgba(var(--secondary-color-rgb), 0.4),
         transparent
+    );
+
+    --question-bg-gradient: linear-gradient(
+        to bottom,
+        rgba(var(--secondary-color-rgb), 0.3) 0%,
+        rgba(var(--secondary-color-rgb), 0.1) 40%,
+        transparent 70%
     );
 
     --bg-gradient-2: radial-gradient(
@@ -166,10 +128,6 @@ h1.light, h2.light, h3.light, h4.light, h5.light, h6.light {
   color: var(--font-color-light);
 }
 
-h1.dark, h2.dark, h3.dark, h4.dark, h5.dark, h6.dark {
-  color: var(--font-color-dark);
-}
-
 h1 {
     font-family: var(--font-secondary-family);
     font-weight: 700;
@@ -240,15 +198,15 @@ label {
 }
 
 .label-design {
-    background: rgba(36,135,201,0.04);
-    border: 1px solid rgba(36,135,201,0.12);
+    background: rgba(var(--primary-color-rgb), 0.04);
+    border: 1px solid rgba(var(--primary-color-rgb), 0.2);
     border-image: linear-gradient(
         to right,
         rgba(var(--primary-color-rgb), 0.25) 20%,
         transparent 50%,
         rgba(var(--primary-color-rgb), 0.25) 80%
     ) 1;
-    margin-bottom: 2px;
+    margin-bottom: 0.2rem;
 }
 
 /* Hide the native radio button */
@@ -373,8 +331,9 @@ ul {
 }
 
 .trivia-block {
+    background: var(--secondary-bg-color);
+    background-image: var(--question-bg-gradient);
     border: 1px solid var(--secondary-color);
-    border-radius: 2px; 
     padding: 1rem;
     margin-top: 1rem;
     font-family: var(--font-primary-family);
@@ -406,7 +365,7 @@ ul {
 
 .block1 {
     background: var(--secondary-bg-color);
-    border: 1px solid rgba(36,135,201,0.2);
+    border: 1px solid rgba(var(--primary-color-rgb), 0.2);
     margin-bottom: 6px;
 }
 
@@ -436,8 +395,8 @@ ul {
 }
 
 .block1-sub {
-    font-size: 0.7rem;
-    color: rgba(var(--primary-color-rgb), 0.4);
+    font-size: 0.8rem;
+    color: rgba(var(--primary-color-rgb), 0.5);
     letter-spacing: 0.18em;
     text-transform: uppercase;
     text-align: center;
@@ -475,12 +434,12 @@ ul {
 }
 
 .block1-btn:hover {
-    background: rgba(36,135,201,0.1);
+    background: rgba(var(--primary-color-rgb), 0.1);
 }
 
 .block2 {
     background: var(--primary-bg-color);
-    border: 1px solid rgba(36,135,201,0.15);
+    border: 1px solid rgba(var(--primary-color-rgb), 0.15);
     padding: 0.4rem 0.75rem;
     display: flex;
     justify-content: center;
@@ -490,7 +449,7 @@ ul {
 #questionBlock {
     display: none;
     background: var(--secondary-bg-color);
-    background-image: var(--header-bg-gradient);
+    background-image: var(--question-bg-gradient);
     border: 1px solid rgba(var(--primary-color-rgb), 0.3);
     position: relative;
 }
@@ -509,20 +468,20 @@ ul {
 #questionBlock .bc::after  { bottom:-1px;right:-1px; border-bottom:2px solid var(--primary-color);border-right:2px solid var(--primary-color); }
 
 .question-glow {
-    height: 2px;
+    height: 1px;
     background: var(--glow-line-gold);
 }
 
 .question-bar {
     display: flex;
     align-items: center;
-    background: rgba(32,68,117,0.2);
-    border-bottom: 1px solid rgba(36,135,201,0.1);
+    background: rgba(var(--tertiary-bg-color-rgb), 0.75);
+    border-bottom: 1px solid rgba(var(--primary-color-rgb), 0.2);
 }
 
 .question-bar-tab {
-    background: rgba(6,159,230,0.08);
-    border-right: 1px solid rgba(6,159,230,0.25);
+    background: rgba(var(--tertiary-color-rgb), 0.1);
+    border-right: 1px solid rgba(var(--tertiary-color-rgb), 0.25);
     padding: 0.3rem 0.75rem;
     display: flex;
     align-items: center;
@@ -530,12 +489,12 @@ ul {
 }
 
 .question-bar-rune {
-    color: rgba(6,159,230,0.4);
+    color: rgba(var(--tertiary-color-rgb), 0.75);
     font-size: 0.75rem;
 }
 
 .question-bar-text {
-    font-size: 0.7rem;
+    font-size: 0.75rem;
     letter-spacing: 0.18em;
     text-transform: uppercase;
     font-weight: 500;
@@ -553,7 +512,7 @@ ul {
 
 .question-bar-meta {
     font-size: 0.65rem;
-    color: rgba(var(--font-color-yellow-rgb), 0.4);
+    color: rgba(var(--font-color-yellow-rgb), 0.35);
     letter-spacing: 0.12em;
     text-transform: uppercase;
     font-family: var(--font-primary-family);
@@ -568,12 +527,6 @@ ul {
     font-weight: 500;
     margin-bottom: 0.5rem;
 }
-
-/* .answer-area .label-for-answer {
-    background: rgba(36,135,201,0.04);
-    border: 1px solid rgba(36,135,201,0.12);
-    margin-bottom: 2px;
-} */
 
 .stargate-img {
     position: absolute;
@@ -595,7 +548,8 @@ ul {
     );
     border-left: 2px solid rgba(var(--primary-color-rgb), 0.4);
     border-right: 2px solid rgba(var(--primary-color-rgb), 0.4);
-    padding: 8px;
+    border-bottom: 2px solid rgba(var(--primary-color-rgb), 0.4);
+    padding: 0.5rem;
     position: relative;
 }
 
@@ -622,7 +576,7 @@ ul {
 }
 
 .result-block:nth-child(even) {
-    background: rgba(36,135,201,0.03);
+    background: rgba(var(--primary-color-rgb), 0.03);
 }
 
 .icon-block {
