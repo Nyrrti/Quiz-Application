@@ -1,10 +1,10 @@
 
 :root {
-    --primary-bg-color: #09121f;
-    --secondary-bg-color: #0d1626;
-    --tertiary-bg-color: #11243d;
-    --primary-gradient-color: #1b283e;
-    --secondary-gradient-color: #12162a;
+    --primary-bg-color: #0d1a2a;
+    --secondary-bg-color: #111d33;
+    --tertiary-bg-color: #152336;
+    --primary-gradient-color: #162436;
+    --secondary-gradient-color: #0e1828;
     --primary-color: #2487c9;
     --secondary-color: #204475;
     --tertiary-color: #069fe6;
@@ -142,7 +142,7 @@ h4 {
 }
 h4.glyphs {
     font-family: var(--font-tertiary-family);
-    font-size: var(--font-size-xl);
+    font-size: var(--font-size-lg);
 }
 h5 {font-size: var(--font-size-md);
     margin: 0;
@@ -475,7 +475,7 @@ ul {
 .question-bar {
     display: flex;
     align-items: center;
-    background: rgba(var(--tertiary-bg-color-rgb), 0.75);
+    background: rgba(var(--tertiary-bg-color-rgb), 0.45);
     border-bottom: 1px solid rgba(var(--primary-color-rgb), 0.2);
 }
 
@@ -559,7 +559,7 @@ ul {
 }
 
 .glyph-block {
-    width: 4rem;
+    width: 3.6rem;
     aspect-ratio: 1;
     background-color: var(--secondary-bg-color);
     border: 1px solid var(--primary-color);
