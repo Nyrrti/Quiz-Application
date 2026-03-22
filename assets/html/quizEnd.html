@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/gridLayout.css"> 
+    <link rel="stylesheet" href="../css/style.css">
+    <script src="../js/lib/external/underscore-umd-min.js" defer></script>
+    <script src="../js/lib/quiz.js" defer></script> 
+    <script src="../js/lib/question.js" defer></script>
+    <script src="../js/lib/renderQuiz.js" defer></script> 
+    <script src="../js/endPage.js" defer></script>
+    <title>Quiz</title>
+</head>
+<body>
+    <img class="stargate-img" src="../img/stargate_with_glyphs.svg" alt="Stargate">
+    <div class="grid-container-fluid">     
+        <div class="grid-container-overlap">
+            <div class="grid-container"> 
+                <div class="col-12 col-md-8 col-lg-6 offset-md-2 offset-lg-4 mx-4">
+                    <!--First Block-->
+                    <div class="block1">
+                        <div class="block1-stripe"></div>
+                        <div class="block1-inner">
+                            <h1 class="block1-title">Stargate SG-1</h1>
+                            <p class="block1-sub">Stargate Command // Mission Debrief</p>
+                            <div class="block1-ctrl">
+                                <div class="block1-ctrl-spacer"></div>
+                                <button type="button" class="block1-btn" id="checkEndResult">Check Results</button>
+                                <div class="light" id="displayScore" style="flex:1;text-align:right"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--2nd Block-->
+                    <div class="col-12 my-2" id="addResult">
+                        <!--Adding questions here-->
+                           <div class="" id="resultBlock"></div> 
+                           <h5 class="light" id="questionValue"></h5>
+                           <p class="light" id="answerValue"></p>
+                    </div>
+                </div>
+            </div>
+        </div> 
+        <!--Fluid-Container End-->
+    </div>
+</body>
+</html>

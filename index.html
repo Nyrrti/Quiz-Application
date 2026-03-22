@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./assets/css/gridLayout.css"> 
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <script src="./assets/js/lib/external/underscore-umd-min.js" defer></script>
+    <script src="./assets/js/lib/quiz.js" defer></script> 
+    <script src="./assets/js/lib/question.js" defer></script>
+    <script src="./assets/js/lib/renderQuiz.js" defer></script> 
+    <script src="./assets/js/lib/quizTimer.js" defer></script> 
+    <script src="./assets/js/myscriptClass.js" defer></script>
+    <title>Quiz</title>
+</head>
+<body>
+    <img class="stargate-img" src="./assets/img/stargate_with_glyphs(15).svg" alt="Stargate">
+    <div class="grid-container-fluid">     
+        <div class="grid-container-overlap">
+            <div class="grid-container"> 
+                <div class="col-12 col-md-8 col-lg-6 offset-md-2 offset-lg-4 mx-4">
+                    <div class="quiz-container-top"></div>
+                    <div class="quiz-container">
+                        <!-- First Block -->
+                        <div class="block1" id="block1">
+                            <div class="block1-stripe"></div>
+                            <div class="block1-inner">
+                                <h1 class="block1-title">Stargate SG-1</h1>
+                                <p class="block1-sub">Stargate Command // Knowledge Assessment</p>
+                                <div class="block1-ctrl">
+                                    <button type="button" class="block1-btn" id="startButton">Start Quiz</button>
+                                    <h5 class="light thin" id="indexQuestion"></h5>
+                                </div>
+                            </div>
+                        </div>
+                        <!--Timer Block-->
+                        <div class="col-12 my-3">
+                            <div class="light d-flex justify-center" id="timerArea"></div>
+                        </div>
+                        <!--Second Block-->
+                        <div class="grid-container" id="questionContainer">
+                            <div class="col-12" id="questionBlock">
+                                <!-- <h5 class="color2 px-3 py-2" id="questionValue"></h5>
+                                <h5 class="error text-center" id="errorMsg"></h5>
+                                <div class="answer-area px-3" id="answerValue"></div>
+                                <div class="light py-3" id="trivia"></div>        -->
+                            </div>
+                        </div>
+                        <!--Block 3-->
+                        <div class="col-12 d-flex justify-space-around">
+                            <div class="" id="previousButton"></div>
+                            <div class="" id="finishButton"></div>
+                            <div class="" id="nextButton"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> 
+        <!--Fluid-Container End-->
+    </div>
+</body>
+</html>

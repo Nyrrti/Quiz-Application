@@ -1,0 +1,722 @@
+/* :root {
+    --primary-bg-color: #111e3b;
+    --secondary-bg-color: #30408f;
+    --primary-color: #137cc1;
+    --secondary-color: #204475;
+    --tertiary-color: #0e274e;
+    --primary-gradient-color:#1b283e;
+    --secondary-gradient-color: #12162a;
+    --primary-bg-gradient-color: #30408f;
+    --secondary-bg-gradient-color: #1c1c2c;
+    --font-color-light: #a6cbe7;
+    --font-color-dark: #404040;
+    --font-color-yellow: #ffc964;
+    --font-color-blue: #069fe6;
+    --error-color: #ff2a0e;
+    --correct-color: #33cf1f;
+    --score-color: #f89e0e;
+    --correct-glow: #00dca1;
+    --incorrect-glow: #f38226;
+
+    --bg-gradient: radial-gradient(
+        ellipse 55% 75% at center top,
+        rgba(36, 135, 201, 0.2) 0%,
+        rgba(36, 135, 201, 0.1) 40%,
+        rgba(36, 135, 201, 0.05) 70%,
+        transparent 100%
+    );
+
+    --bg-gradient-left-right: linear-gradient(
+        to right,
+        rgba(11, 70, 109, 0.5) 15%,
+        transparent 75%
+    );
+
+    --font-size-xxs: clamp(0.8rem, 1vw, 0.9rem);
+    --font-size-xsm: clamp(0.85rem, 1.3vw, 0.95rem);
+    --font-size-sm: clamp(0.8rem, 1.3vw, 1.05rem);
+    --font-size-md: clamp(1rem, 1.5vw, 1.1rem);
+    --font-size-lg: clamp(1.5rem, 2.5vw, 2.4rem);
+    --font-size-xl: clamp(2rem, 3vw, 2.7rem);
+
+    --font-primary-family: 'BankGothic Bold','Segoe UI', Tahoma, Verdana, sans-serif;
+    --font-secondary-family: "stargate", sans-serif;
+    --font-tertiary-family: "stargate_sg1_adress_glyphs", sans-serif;
+} */
+
+:root {
+    --primary-bg-color: #080f1a;
+    --primary-gradient-color: #1b283e;
+    --secondary-gradient-color: #12162a;
+    --primary-color: #2487c9;
+    --secondary-color: #204475;
+    --tertiary-color: #069fe6;
+    --score-color: #f89e0e;
+    --error-color: #ff2a0e;
+    --correct-color: #33cf1f;
+    
+    --font-color-light: #a6cbe7;
+    --font-color-light2: #77a8ce;
+    --font-color-yellow: #ffc964;
+    --font-color-blue: #069fe6;
+    
+    --primary-color-rgb: 36, 135, 201;
+    --secondary-color-rgb: 32, 68, 117;
+    --tertiary-color-rgb: 6, 159, 230;
+    --error-color-rgb: 235, 74, 29;
+    --correct-color-rgb: 3, 245, 136;
+    
+
+    --stripe-top: repeating-linear-gradient(
+        90deg,
+        rgba(36,135,201,0.45) 0px,
+        rgba(36,135,201,0.45) 4px,
+        transparent 4px,
+        transparent 8px
+    );
+
+    --header-bg-gradient: linear-gradient(
+        to bottom,
+        rgba(32,68,117,0.4),
+        transparent
+    );
+
+    --bg-gradient: linear-gradient(
+        to bottom,
+        rgba(var(--secondary-color-rgb), 0.4),
+        transparent
+    );
+
+    --bg-gradient-2: radial-gradient(
+        ellipse 70% 50% at center top,
+        rgba(var(--primary-color-rgb), 0.2) 0%,
+        rgba(var(--secondary-color-rgb), 0.2) 70%,
+        transparent 100%
+    );
+
+    --bg-crosshatch:
+        repeating-linear-gradient(0deg, transparent, transparent 20px, rgba(var(--tertiary-color-rgb), 0.03) 20px, rgba(var(--tertiary-color-rgb), 0.03) 21px),
+        repeating-linear-gradient(90deg, transparent, transparent 20px, rgba(var(--tertiary-color-rgb), 0.03) 20px, rgba(var(--tertiary-color-rgb), 0.03) 21px);
+
+    --glow-line-gold: linear-gradient(
+        to right,
+        transparent,
+        var(--font-color-yellow),
+        transparent
+    );
+
+    --glow-line-blue: linear-gradient(
+        to right,
+        transparent,
+        var(--primary-color),
+        transparent
+    );
+
+    --glow-line-cyan: linear-gradient(
+        to right,
+        transparent,
+        var(--tertiary-color),
+        transparent
+    );
+
+    --font-size-xxs: clamp(0.8rem, 1vw, 0.9rem);
+    --font-size-xsm: clamp(0.85rem, 1.3vw, 0.95rem);
+    --font-size-sm: clamp(0.9rem, 1.3vw, 1.05rem);
+    --font-size-md: clamp(1rem, 1.5vw, 1.1rem);
+    --font-size-lg: clamp(1.5rem, 2.5vw, 2.4rem);
+    --font-size-xl: clamp(2rem, 3vw, 2.7rem);
+
+    --font-primary-family: 'BankGothic Bold','Segoe UI', Tahoma, Verdana, sans-serif;
+    --font-secondary-family: "stargate", sans-serif;
+    --font-tertiary-family: "stargate_sg1_adress_glyphs", sans-serif;
+}
+
+html,body {
+    min-height: 100vh;
+    font-family: var(--font-primary-family);
+    background-color: var(--primary-bg-color);
+    background-image: linear-gradient(to bottom, var(--primary-gradient-color), var(--secondary-gradient-color));
+    background-repeat:no-repeat;
+    overflow-x: hidden;
+    overflow-y: auto;
+    position: relative;
+    margin: 0;
+}
+
+@font-face {
+    font-family: "stargate_sg1_adress_glyphs";
+    src: url(../font/stargate_sg1_adress_glyphs.woff2) format('woff2'),
+        url(../font/stargate_sg1_adress_glyphs.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: "stargate" ; 
+    src: url(../font//stargate.woff2) format('woff2'),
+        url(../font/stargate.ttf)format('truetype'); 
+}
+
+.light {
+    color: var(--font-color-light);
+}
+
+h1.light, h2.light, h3.light, h4.light, h5.light, h6.light {
+  color: var(--font-color-light);
+}
+
+h1.dark, h2.dark, h3.dark, h4.dark, h5.dark, h6.dark {
+  color: var(--font-color-dark);
+}
+
+h1 {
+    font-family: var(--font-secondary-family);
+    font-weight: 700;
+    font-style: normal;
+    font-size: var(--font-size-xl);
+    text-transform: uppercase;
+}
+
+h2 {font-size: var(--font-size-lg);}
+h4 {
+    margin: 0;
+}
+h4.glyphs {
+    font-family: var(--font-tertiary-family);
+    font-size: var(--font-size-xl);
+}
+h5 {font-size: var(--font-size-md);
+    margin: 0;
+}
+
+h5.end-result-text {
+    font-size: var(--font-size-sm);
+    font-weight: 400;
+}
+
+h5.error {
+    color: var(--error-color);
+    font-weight: 400;
+}
+
+h5.color1 {
+    color: var(--font-color-yellow);
+}
+
+h5.color2 {
+    color: var(--font-color-blue);
+}
+
+h5.thin {
+    font-weight: 400;
+}
+
+p {
+    font-size: var(--font-size-md);
+    margin: 0;
+}
+
+p.light {
+    color: var(--font-color-light);
+
+}
+
+p.small {
+    font-size: var(--font-size-xxs);
+    color: var(--font-color-blue);
+    margin: 0;
+    margin-top: 0.25rem;
+}
+
+.small {
+    font-size: var(--font-size-xxs);
+}
+
+label {
+    font-size: var(--font-size-md);
+    color: var(--font-color-light);
+    text-align: left;
+}
+
+.label-design {
+    border-width: 1px;
+    border-style: solid;
+    border-image: linear-gradient(to right, var(--secondary-color)20% , transparent, var(--secondary-color)80% ) 1;
+    background-image: -moz-linear-gradient(to right, var(--primary-gradient-color)10%, transparent 30%,transparent 70%,var(--primary-gradient-color)90%);
+}
+
+/* Hide the native radio button */
+.label-for-answer input[type="radio"] {
+    appearance: none;
+    -webkit-appearance: none;
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+/* The label itself acts as the clickable row — add a left padding for the custom dot */
+.label-for-answer {
+    position: relative;
+    /* make room for the custom bullet */
+    padding-left: 2.5rem;  
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+/* The custom bullet — using ::before on the label */
+.label-for-answer::before {
+    content: "";
+    position: absolute;
+    left: 0.75rem;
+    width: 0.9rem;
+    height: 0.9rem;
+    border-radius: 50%;
+    border: 2px solid var(--primary-color);
+    background-color: transparent;
+    transition: background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* When the hidden radio inside is checked, style the ::before */
+.label-for-answer:has(input[type="radio"]:checked)::before {
+    background-color: var(--primary-color);
+    box-shadow: 0 0 6px var(--primary-color);
+}
+
+/* Hover state */
+.label-for-answer:hover::before {
+    box-shadow: 0 0 8px var(--font-color-yellow);
+    border-color: var(--font-color-yellow);
+}
+
+/* Dim the bullet on disabled+unchecked */
+.label-for-answer:has(input[type="radio"]:disabled:not(:checked))::before {
+    border-color: var(--secondary-color);
+    background-color: transparent;
+}
+
+/* Remove hover glow when disabled */
+.label-for-answer:has(input[type="radio"]:disabled):hover::before {
+    box-shadow: none;
+    border-color: var(--secondary-color);
+}
+
+.hidden {
+    display: none;
+}
+
+input[type="radio"] {
+    accent-color: var(--primary-color); /* your custom color */
+}
+
+.fading-border {
+    height: 4px;
+    background: linear-gradient(
+        to right,
+        transparent 5%,    /* start fade-in */
+        var(--secondary-color) 40%,         /* color start */
+        var(--secondary-color) 60%,         /* color end */
+        transparent 95%   /* start fade-out */
+  );
+    border-image-slice: 1;
+}
+
+.border {
+    border: 1px solid var(--secondary-color);
+}
+
+.border-double {
+    border: 1px solid var(--primary-color);
+    border-width: 0.35rem;
+    border-style: double;
+}
+
+.primary-bg {
+   background-color: var(--primary-bg-color); 
+} 
+
+#errorMsg {
+    min-height: 1.5rem;
+    transition: opacity 0.3s ease;
+}
+
+#errorMsg.hidden {
+    opacity: 0;
+}
+
+.position-btn {
+    min-width: 5rem;
+    min-height: 2rem;
+    color: var(--font-color-yellow);
+    background: transparent;
+    border: 1px solid rgba(var(--primary-color-rgb), 0.3);
+    padding: 0.3rem 0.75rem;
+    font-size: var(--font-size-xsm);
+    font-family: var(--font-primary-family);
+    letter-spacing: 0.1em;
+    cursor: pointer;
+    margin: 0.5rem 0;
+}
+
+.position-btn:hover {
+    background: rgba(var(--primary-color-rgb), 0.1);
+    border-color: rgba(var(--primary-color-rgb), 0.5);
+}
+ul {
+    list-style-type:none;
+}
+
+.trivia-block {
+    border: 1px solid var(--secondary-color);
+    border-radius: 2px; 
+    padding: 1rem;
+    margin-top: 1rem;
+    font-family: var(--font-primary-family);
+}
+
+.trivia-accent {
+    height: 2px;
+    background: linear-gradient(to right, transparent, var(--primary-color), transparent);
+    margin-bottom: 10px;
+}
+
+.trivia-title {
+    color: var(--primary-color);
+    font-size: var(--font-size-xsm);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin: 0 0 8px;
+    font-weight: 500;
+    font-family: var(--font-primary-family);
+}
+
+.trivia-block p {
+    color: var(--font-color-light);
+    font-size: var(--font-size-sm);
+    font-family: var(--font-primary-family);
+    line-height: 1.7;
+    margin: 4px 0;
+}
+
+.block1 {
+    background: var(--primary-bg-color);
+    border: 1px solid rgba(36,135,201,0.2);
+    margin-bottom: 6px;
+}
+
+.block1-stripe {
+    height: 3px;
+    background: var(--stripe-top);
+}
+
+.block1-inner {
+    padding: 12px 14px;
+    background: var(--header-bg-gradient);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.block1-title {
+    font-family: var(--font-secondary-family);
+    font-size: var(--font-size-xl);
+    font-weight: 300;
+    letter-spacing: 0.3em;
+    color: var(--font-color-light);
+    text-align: center;
+    text-transform: uppercase;
+    margin: 0;
+}
+
+.block1-sub {
+    font-size: 0.55rem;
+    color: rgba(36,135,201,0.35);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    text-align: center;
+    font-family: var(--font-primary-family);
+    margin: 0;
+}
+
+.block1-ctrl {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 4px 0;
+    border-top: 1px solid rgba(36,135,201,0.1);
+}
+
+.block1-btn {
+    font-size: var(--font-size-xsm);
+    color: var(--primary-color);
+    border: 1px solid rgba(36,135,201,0.3);
+    padding: 0.3rem 0.75rem;
+    background: transparent;
+    letter-spacing: 0.1em;
+    font-family: var(--font-primary-family);
+    cursor: pointer;
+}
+
+.block1-btn:hover {
+    background: rgba(36,135,201,0.1);
+}
+
+.block2 {
+    background: var(--primary-bg-color);
+    border: 1px solid rgba(36,135,201,0.15);
+    padding: 0.4rem 0.75rem;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 6px;
+}
+
+#questionBlock {
+    display: none;
+    background: var(--primary-bg-color);
+    background-image: var(--header-bg-gradient);
+    border: 1px solid rgba(36,135,201,0.2);
+    position: relative;
+}
+
+#questionBlock::before, #questionBlock::after,
+#questionBlock .bc::before, #questionBlock .bc::after {
+    content: "";
+    position: absolute;
+    width: 9px;
+    height: 9px;
+}
+
+#questionBlock::before { top:-1px;left:-1px; border-top:2px solid var(--tertiary-color);border-left:2px solid var(--tertiary-color); }
+#questionBlock::after  { top:-1px;right:-1px; border-top:2px solid var(--tertiary-color);border-right:2px solid var(--tertiary-color); }
+#questionBlock .bc::before { bottom:-1px;left:-1px; border-bottom:2px solid var(--primary-color);border-left:2px solid var(--primary-color); }
+#questionBlock .bc::after  { bottom:-1px;right:-1px; border-bottom:2px solid var(--primary-color);border-right:2px solid var(--primary-color); }
+
+.question-glow {
+    height: 2px;
+    background: var(--glow-line-gold);
+}
+
+.question-bar {
+    display: flex;
+    align-items: center;
+    background: rgba(32,68,117,0.2);
+    border-bottom: 1px solid rgba(36,135,201,0.1);
+}
+
+.question-bar-tab {
+    background: rgba(6,159,230,0.08);
+    border-right: 1px solid rgba(6,159,230,0.25);
+    padding: 0.3rem 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.question-bar-rune {
+    color: rgba(6,159,230,0.4);
+    font-size: 0.75rem;
+}
+
+.question-bar-text {
+    font-size: 0.65rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-weight: 500;
+    color: var(--tertiary-color);
+    font-family: var(--font-primary-family);
+}
+
+.question-bar-rest {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 0 0.5rem;
+}
+
+.question-bar-meta {
+    font-size: 0.5rem;
+    color: rgba(255,201,100,0.2);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-family: var(--font-primary-family);
+}
+
+.question-content {
+    padding: 0.75rem;
+}
+
+.question-value {
+    color: var(--font-color-yellow);
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+}
+
+.answer-area .label-for-answer {
+    background: rgba(36,135,201,0.04);
+    border: 1px solid rgba(36,135,201,0.12);
+    margin-bottom: 2px;
+}
+
+.stargate-img {
+    position: absolute;
+    top: 35%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 55rem;   
+    height: 55rem;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.quiz-container {
+    background: #060d18;
+    border-left: 2px solid rgba(36,135,201,0.4);
+    border-right: 2px solid rgba(36,135,201,0.4);
+    padding: 8px;
+}
+
+.quiz-container-top {
+    height: 2px;
+    background: linear-gradient(to right, transparent, var(--font-color-yellow), transparent);
+}
+
+.glyph-block {
+    width: 4rem;
+    aspect-ratio: 1;
+    background-color: var(--primary-bg-color);
+    border: 1px solid var(--primary-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.result-block {
+    box-sizing: border-box;
+    width: 100%;
+    min-height: 3rem;
+    background-color: var(--primary-bg-color);
+}
+
+.result-block:nth-child(even) {
+    background: rgba(36,135,201,0.03);
+}
+
+.icon-block {
+    width: 2.25rem;
+    height: 100%;
+}
+
+.score-block {
+    display: hidden;
+    min-width: 4rem;
+    height: 3rem;
+    border: 1px solid var(--score-color);
+}
+
+.incorrect {
+    border: 1px solid;
+    border-image-slice: 1;
+    border-image-source: linear-gradient(
+        to left,
+        rgba(var(--error-color-rgb), 0.75) 0%,
+        rgba(var(--error-color-rgb), 0.3) 30%,
+        rgba(var(--error-color-rgb), 0.3) 70%,
+        rgba(var(--error-color-rgb), 0.75) 100%
+    );
+}
+
+.correct {
+    border: 1px solid;
+    border-image-slice: 1;
+    border-image-source: linear-gradient(
+        to left,
+        rgba(var(--correct-color-rgb), 0.75) 0%,
+        rgba(var(--correct-color-rgb), 0.3) 30%,
+        rgba(var(--correct-color-rgb), 0.3) 70%,
+        rgba(var(--correct-color-rgb), 0.75) 100%
+    );
+}
+
+.answer-area .label-for-answer.correct {
+    border: 1px solid;
+    border-image-slice: 1;
+    border-image-source: linear-gradient(
+        to right,
+        rgba(var(--correct-color-rgb), 0.75) 0%,
+        rgba(var(--correct-color-rgb), 0.2) 30%,
+        rgba(var(--correct-color-rgb), 0.2) 70%,
+        rgba(var(--correct-color-rgb), 0.75) 100%
+    );
+    background: linear-gradient(
+        to left,
+        rgba(var(--correct-color-rgb), 0.06) 0%,
+        transparent 80%
+    );
+}
+
+.answer-area .label-for-answer.incorrect {
+    border: 1px solid;
+    border-image-slice: 1;
+    border-image-source: linear-gradient(
+        to right,
+        rgba(var(--error-color-rgb), 0.75) 0%,
+        rgba(var(--error-color-rgb), 0.2) 30%,
+        rgba(var(--error-color-rgb), 0.2) 70%,
+        rgba(var(--error-color-rgb), 0.75) 100%
+    );
+    background: linear-gradient(
+        to left,
+        rgba(var(--error-color-rgb), 0.06) 0%,
+        transparent 80%
+    );
+}
+
+.orange {
+    border: 8px solid;
+    border-image-slice: 1;
+    border-width: 1px;
+    border-image-source: linear-gradient(to left, var(--score-color), var(--font-color-yellow), var(--score-color));
+    color: var(--score-color);
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+    .stargate-img {
+        top: 28%;
+        left: 50%;
+        width: 59rem;   
+        height: 59rem;
+    }      
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+    .stargate-img {
+        top: 40%;
+        left: 50%;
+        width: 71rem;   
+        height: 71rem;
+    }   
+}
+
+/* Extra large devices (extra large laptops and desktops, 2000px and up) */
+@media only screen and (min-width: 2000px) {
+    .stargate-img {
+        top: 36%;
+        left: 50%;
+        width: 80rem;   
+        height: 80rem;
+    }   
+}
