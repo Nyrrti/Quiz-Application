@@ -5,13 +5,17 @@ class RenderQuiz {
     #quizTimer = null;
      /** @type {Question | null} */
     #currentQuestion = null;
-    // Attributes - what it has
+    
+    /**
+     * 
+     * @param {Question} currentQuestion 
+     */
     constructor(currentQuestion) {
         this.#currentQuestion = currentQuestion;
     }
 
-    /**
-     * Renders the question and its answers on the screen
+    /** Renders the question and its answers on the screen
+     * 
      * @param {Question} question The question object to display
      */
     renderQuestion(question) {
@@ -78,7 +82,7 @@ class RenderQuiz {
         if (question.isAnswered) {
             this.displayLockedLetters(question.lockedLetters); 
         }
-
+        // Display iris if timer expired
         if (question.isExpired) {
             this.displayIrisOverlay();
         }
@@ -100,7 +104,7 @@ class RenderQuiz {
                 question.lockedLetters = this.#quizTimer.lockedLetters;  
                 this.#quizTimer.stopTimer(); 
                 this.#quizTimer.lockRevealedBlocks();
-                // Get the value of the click
+                // Get the answer value of the click
                 question.selectedAnswer = event.target.value;
                 // Show green color and add trivia at correct answer, show red on incorrect answer
                 this.displayAnswerResult(event.target.value, event.target.parentElement);
@@ -124,8 +128,8 @@ class RenderQuiz {
         }
     }
 
-    /**
-     * Checks the selected answer and displays the correct(with trivia)/incorrect result
+    /** Checks the selected answer and displays the correct(with trivia)/incorrect result
+     * 
      * @param {string} selectedAnswer The answer value the user selected
      * @param {HTMLElement} htmlElement The html element to apply correct/incorrect styling to
      */
@@ -146,27 +150,33 @@ class RenderQuiz {
 
     addTrivia() {
         const triviaContainer = document.getElementById("trivia");
+        // Get the trivia for the current question
         const text = this.#currentQuestion.answerTrivia;
         triviaContainer.appendChild(this.createTriviaBlock(text));
     }
 
+    /** Puts every sentence that ends with a . into a new paragraph and into a div
+     * 
+     * @param {string} text Enter the text you want to insert
+     * @returns Trivia box with sentences each in a paragraph
+     */
     createTriviaBlock(text) {
-        // outer container
+        // Outer container
         const triviaBox = document.createElement("div");
         triviaBox.className = "trivia-block";
 
-        // accent line
+        // Accent line
         const accent = document.createElement("div");
         accent.className = "trivia-accent";
         triviaBox.appendChild(accent);
 
-        // title
+        // Title
         const title = document.createElement("h5");
         title.className = "trivia-title";
         title.textContent = "⊗ Trivia";
         triviaBox.appendChild(title);
 
-        // sentences
+        // Sentences
         const sentences = text.split(". ");
         for (let i = 0; i < sentences.length; i++) {
             const p = document.createElement("p");
@@ -206,34 +216,12 @@ class RenderQuiz {
         htmlElement.classList.add("incorrect");
     }
 
-    // /**
-    //  * 
-    //  * @param {HTMLElement} htmlElement The element you want to apply the class to
-    //  */
-    // displayOrange(htmlElement) {
-    //     htmlElement.classList.add("orange");
-    // }
-
-    // createQuestionBar(text) {
-    //     // Remove old bar if it exists
-    //     const existingBar = document.querySelector(".question-bar");
-    //     if (existingBar) {
-    //         existingBar.remove();
-    //     }
-
-    //     const bar = document.createElement("div");
-    //     const pip = document.createElement("div");
-    //     const barText = document.createElement("span");
-    //     bar.className = "question-bar";
-    //     pip.className = "question-bar-pip";
-    //     barText.className = "question-bar-text";
-    //     barText.textContent = text;
-    //     bar.appendChild(pip);
-    //     bar.appendChild(barText);
-    //     return bar;
-    // }
-
-  createQuestionBar(text) {
+    /** Create the questionbar design
+     * 
+     * @param {string} title What the title of the bar is
+     * @returns Design of the questionbar parts
+     */
+  createQuestionBar(title) {
         document.querySelector(".question-glow")?.remove();
         document.querySelector(".question-bar")?.remove();
 
@@ -252,7 +240,7 @@ class RenderQuiz {
 
         const label = document.createElement("span");
         label.className = "question-bar-text";
-        label.textContent = text;
+        label.textContent = title;
 
         tab.appendChild(rune);
         tab.appendChild(label);
@@ -304,8 +292,8 @@ class RenderQuiz {
         finishButton.append(button);
     }
 
-    /**
-     * Show which index number of the question list you are on (example: 3 of 10)
+    /** Show which index number of the question list you are on (example: 3 of 10)
+     * 
      * @param {number} currentIndex Needs the currentindex of quiz class
      * @param {number} numberOfQuestions How many questions in the array
      */
@@ -313,8 +301,8 @@ class RenderQuiz {
         document.getElementById("indexQuestion").innerText = "Question: " + (currentIndex + 1) + " of " + (numberOfQuestions);
     }
 
-    /**
-     * This hides the previous button at start and the next button at end
+    /** This hides the previous button at start and the next button at end
+     * 
      * @param {number} currentIndex Needs the currentindex of quiz class
      * @param {number} numberOfQuestions How many questions in the array
      */
@@ -335,8 +323,8 @@ class RenderQuiz {
         }
     }
 
-     /**
-     * This creates and displays the finish button at the end of the quiz
+     /** This creates and displays the finish button at the end of the quiz
+     * 
      * @param {number} currentIndex Needs the currentindex of quiz class
      * @param {number} numberOfQuestions How many questions in the array
      */
@@ -358,7 +346,6 @@ class RenderQuiz {
                 checkedButton[i].disabled = true;
             }
             else {
-                console.log("LockAnswer Function - No answers selected");
                 checkedButton[i].disabled = true;
             }
         }
@@ -384,9 +371,9 @@ class RenderQuiz {
         }, 1200);
     }
 
-    /**
+    /** Return the questions based on the current shuffled questionOrder in a array
      * 
-     * @param {Array} orderedQuestion Return the questions based on the current shuffled questionOrder in a array
+     * @param {number[]} orderedQuestion The order of the questions in questionorder
      */
     displayEndResult(orderedQuestion) {
         const container = document.getElementById("addResult");
@@ -401,6 +388,7 @@ class RenderQuiz {
         container.appendChild(debriefContainer);
         debriefContainer.appendChild(debriefTitle);
         
+        // For every question
         for (let i = 0; i < orderedQuestion.length; i++) {
             let block = document.createElement("div");
             let blockIcon = document.createElement("div");
@@ -452,10 +440,10 @@ class RenderQuiz {
         }
     }
 
-    /**
+    /** Checks which answers wascorrect out of lotal questions
      * 
-     * @param {number} correctAmount checks which answers wascorrect out of lotal questions
-     * @param {number} numberOfQuestions how many questions in total
+     * @param {number} correctAmount Amount of correct questions
+     * @param {number} numberOfQuestions How many questions in total
      */
     displayScore(correctAmount, numberOfQuestions) {
         const container = document.getElementById("displayScore");
@@ -468,7 +456,6 @@ class RenderQuiz {
         container.appendChild(block);
 
         block.innerText = "Score: " + (correctAmount) + " of " + (numberOfQuestions);
-
     }
 
     /**
@@ -487,6 +474,7 @@ class RenderQuiz {
         }
         this.#quizTimer = new QuizTimer();
         this.#quizTimer.start();
+        // Callback function
         this.#quizTimer.onExpired(() => {
             this.#quizTimer.stopTimer();
             this.#currentQuestion.lockedLetters = this.#quizTimer.lockedLetters;
@@ -511,8 +499,8 @@ class RenderQuiz {
         content.appendChild(overlay);
     }
     
-    /**
-     * Stop the timer and display the locked letters
+    /** Stop the timer and display the locked letters
+     * 
      * @param {string[]} lockedLetters The letters that the timer saves per question in a array
      */
     displayLockedLetters(lockedLetters) {

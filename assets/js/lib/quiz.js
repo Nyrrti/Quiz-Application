@@ -1,18 +1,22 @@
 // Quiz class, anything for running the quiz.
 class Quiz {
+    /** @type {number} */
     #currentIndex = 0;
+    /** @type {JSON} */
     #questions = [];
+    /** @type {number} */
     #currentScore = 0;
+    /**@type {number} */
     #questionOrder = [];
+    
     constructor(){
         
     }
 
-    // this function returns the question based on id
-    /**
+    /** This function returns the question based on id
      * 
-     * @param {number} id 
-     * @returns {Question}
+     * @param {number} id Id of a question
+     * @returns {Question} Returns the question object
      */
     #getQuestion(id) {
         // loop through the questions
@@ -26,7 +30,11 @@ class Quiz {
             return null;
     }
     
-    // Return the questions based on the current shuffled questionOrder in a array
+     
+    /** Return the questions based on the current shuffled questionOrder in a array
+     * 
+     * @returns The shuffled order of ids
+     */
     getOrderedQuestions() {
         let orderedQuestions = [];
 
@@ -47,11 +55,11 @@ class Quiz {
             output.push(this.#getQuestion(questionId).createJson());
         }
         sessionStorage.setItem("data", JSON.stringify(output));
-        console.log(sessionStorage.getItem("data"))
+        // console.log(sessionStorage.getItem("data"))
     }
 
-    /**
-     * Load in JSON string
+    /** Load in JSON string
+     * 
      * @param {string} dataQuestions loop through the json data and create new questions with the class Question
      */
     loadData(dataQuestions){
@@ -64,7 +72,7 @@ class Quiz {
                 question.correctAnswer,
                 question.isAnswered,
                 question.wasCorrect,
-                question.ranOutTime,
+                question.isExpired,
                 question.selectedAnswer,
                 question.answerTrivia,
             )) 
@@ -74,8 +82,8 @@ class Quiz {
         // console.log(this.#questions, this.#questionOrder);
     }
 
-    /**
-     * Resets the quiz and returns the first question of the new shuffled order
+    /** Resets the quiz and returns the first question of the new shuffled order
+     * 
      * @returns {Question} The first question of the shuffled order
      */
     restart() {
@@ -90,15 +98,25 @@ class Quiz {
         return this.#getQuestion(this.#questionOrder[0]);
     }
 
+    /**
+     * 
+     * @returns Next question object based on the shuffled order
+     */
     nextQuestion() {
         if (this.#currentIndex < this.#questionOrder.length - 1) {
             this.#currentIndex++;
         }
         // Get the current index, Use that number to look up the value at that numbers position in the question order array. That value become the question ID. 
         // ex: currentindex = 3, get position 3 in the questionOrder array and return the value of that position, say nr 8. That becomes question ID 8.
+        console.log(this.#getQuestion(this.#questionOrder[this.#currentIndex]));
         return this.#getQuestion(this.#questionOrder[this.#currentIndex]);
+        
     }
 
+    /**
+     * 
+     * @returns Previous question object based on the shuffled order
+     */
     previousQuestion() {
         if (this.#currentIndex > 0) {
             this.#currentIndex--;
@@ -108,6 +126,11 @@ class Quiz {
         return this.#getQuestion(this.#questionOrder[this.#currentIndex]);
     }
 
+    /**
+     * 
+     * @param {Question} questions 
+     * @returns How many questions were correct
+     */
     checkScore(questions) {
         for (let i = 0; i < questions.length; i++) {
             const question = questions[i];
@@ -119,12 +142,12 @@ class Quiz {
         return this.#currentScore;  
     }
 
-    /**
-     *  Checks if the user is allowed to move to the next question.
-        Returns true if the question was answered, or if the timer ran out.
-        Returns false if the timer is still running and no answer was selected.
+    /** Checks if the user is allowed to move to the next question.
+     *  
+     *   
      * @param {Question} currentQuestion Gets the current question object
-     * @returns 
+     * @returns Returns true if the question was answered, or if the timer ran out.
+                Returns false if the timer is still running and no answer was selected.
      */
     checkIfAnswered(currentQuestion) {
         // if isExpired is false
@@ -152,6 +175,7 @@ class Quiz {
     length() {
        return this.#questions.length;
     }
+    
     /**
      * 
      * @returns {number} The current position in the question order
