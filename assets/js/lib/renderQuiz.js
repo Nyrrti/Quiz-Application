@@ -15,6 +15,8 @@ class RenderQuiz {
      * @param {Question} question The question object to display
      */
     renderQuestion(question) {
+        // Remove iris overlay at new question
+        document.getElementById("iris-overlay")?.remove();
         const questionBlock = document.getElementById("questionBlock");
         questionBlock.style.display = "block";
         questionBlock.innerHTML = "";
@@ -24,32 +26,32 @@ class RenderQuiz {
         console.log("Questionorder = " + quiz.questionOrder);
         this.#currentQuestion = question;
 
-        // 1. bc for corners
+        // bc for corners
         const bc = document.createElement("div");
         bc.className = "bc";
         questionBlock.appendChild(bc);
 
-        // 2. glow line + bar
+        // Glow line + bar
         const { glow, bar } = this.createQuestionBar("Mission Query");
         questionBlock.appendChild(glow);
         questionBlock.appendChild(bar);
 
-        // 3. content wrapper
+        // Content wrapper
         const questionContent = document.createElement("div");
         questionContent.className = "question-content";
-
+        // Question title container
         const questionValue = document.createElement("h5");
         questionValue.id = "questionValue";
-        questionValue.className = "question-value";
+        questionValue.className = "title";
 
         const errorMsg = document.createElement("h5");
         errorMsg.id = "errorMsg";
         errorMsg.className = "error text-center";
-
+        // Answer container
         const answerValue = document.createElement("div");
         answerValue.id = "answerValue";
         answerValue.className = "answer-area";
-
+        // Trivia container
         const trivia = document.createElement("div");
         trivia.id = "trivia";
 
@@ -62,7 +64,7 @@ class RenderQuiz {
         // Add question title
         document.getElementById("questionValue").innerText = question.title;
     
-        // Add container for the answers
+        // Get the Answer container
         const container = document.getElementById("answerValue");
 
         // Clear old answers
@@ -101,8 +103,7 @@ class RenderQuiz {
 
             // Restores previous answer and styling
             if (question.isAnswered) {
-                radio.disabled = true;
-                // this.displayLockedLetters(question.lockedLetters);  
+                radio.disabled = true;  
             }
             // Re-check the radio the user previously picked
             if (answers[i] === question.selectedAnswer) {
@@ -413,7 +414,7 @@ class RenderQuiz {
         let debriefContainer = document.createElement("div");
         let debriefTitle = document.createElement("h5");
         debriefContainer.className = "light primary-bg border p-2";
-        debriefTitle.className = "light text-center py-1";
+        debriefTitle.className = "title light text-center py-1";
         debriefTitle.innerText = "Mission Debrief"
 
         container.appendChild(debriefContainer);
@@ -477,12 +478,12 @@ class RenderQuiz {
      */
     displayScore(correctAmount, numberOfQuestions) {
         const container = document.getElementById("displayScore");
-        container.classList.remove("hidden")
+        container.classList.remove("hidden");
         container.innerHTML = ""; 
 
         let block = document.createElement("div");
         block.id = "scoreBoard";
-        block.className = "score-block d-flex items-center p-3";
+        block.className = "score-block d-flex items-center justify-center p-3";
         container.appendChild(block);
 
         block.innerText = "Score: " + (correctAmount) + " of " + (numberOfQuestions);
@@ -512,9 +513,23 @@ class RenderQuiz {
             this.#currentQuestion.isAnswered = true;
             console.log("Time's up! Engage Iris.")
             this.lockAnswer();
+            this.displayIrisOverlay();
         });
     }
 
+    displayIrisOverlay() {
+        const content = document.getElementById("questionBlock");
+        const overlay = document.createElement("div");
+        overlay.id = "iris-overlay";
+        overlay.className = "iris-overlay";
+
+        const msg = document.createElement("span");
+        msg.className = "iris-msg";
+        msg.textContent = "⊗ IRIS ENGAGED";
+        overlay.appendChild(msg);
+        content.appendChild(overlay);
+    }
+    
     /**
      * Stop the timer and display the locked letters
      * @param {string[]} lockedLetters The letters that the timer saves per question in a array

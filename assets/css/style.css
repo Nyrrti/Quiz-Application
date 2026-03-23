@@ -19,6 +19,7 @@
     --font-color-blue: #069fe6;
     
     --primary-color-rgb: 36, 135, 201;
+    --primary-bg-color-rgb: 13, 26, 42;
     --secondary-color-rgb: 32, 68, 117;
     --tertiary-color-rgb: 6, 159, 230;
     --error-color-rgb: 235, 74, 29;
@@ -86,7 +87,7 @@
 }
 
 html,body {
-    min-height: 100vh;
+    min-height: 90vh;
     font-family: var(--font-primary-family);
     background-color: var(--primary-bg-color);
     background-image: linear-gradient(to bottom, var(--primary-gradient-color-light), var(--secondary-gradient-color-dark));
@@ -95,6 +96,7 @@ html,body {
     overflow-y: auto;
     position: relative;
     margin: 0;
+    padding: 0;
 }
 
 @font-face {
@@ -140,6 +142,17 @@ h5 {font-size: var(--font-size-md);
 h5.end-result-text {
     font-size: var(--font-size-sm);
     font-weight: 400;
+}
+
+h5.title {
+    font-size: var(--font-size-md);
+    color: var(--font-color-yellow);
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+}
+
+h5.title.light {
+    color: var(--font-color-blue);   
 }
 
 h5.error {
@@ -297,6 +310,41 @@ input[type="radio"] {
     opacity: 0;
 }
 
+.iris {
+    background-color: red;
+}
+
+.iris-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    animation: iris-close 0.6s ease-in forwards;
+    pointer-events: none;
+}
+
+.iris-msg {
+    font-size: var(--font-size-xsm);
+    color: rgba(var(--error-color-rgb), 0.9);
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    font-family: var(--font-primary-family);
+    opacity: 0;
+    animation: iris-text 0.3s ease-in 0.5s forwards;
+}
+
+@keyframes iris-close {
+    0%   { background: transparent; }
+    100% { background: rgba(var(--primary-bg-color-rgb), 0.75); }
+}
+
+@keyframes iris-text {
+    0%   { opacity: 0; }
+    100% { opacity: 1; }
+}
+
 .position-btn {
     min-width: 5rem;
     min-height: 2rem;
@@ -329,7 +377,7 @@ ul {
 }
 
 .trivia-accent {
-    height: 2px;
+    height: 1px;
     background: var(--glow-line-cyan);
     margin-bottom: 10px;
 }
@@ -399,7 +447,11 @@ ul {
     align-items: center;
     justify-content: space-between;
     padding: 1rem 1rem 0rem 1rem;
-    border-top: 1px solid rgba(var(--primary-color-rgb), 0.1);
+    border-top: 1px solid rgba(var(--primary-color-rgb), 0.2);
+}
+
+.block1-ctrl.end-result {
+    justify-content: center;
 }
 
 #indexQuestion {
@@ -407,7 +459,7 @@ ul {
     text-align: right;
     font-size: var(--font-size-xsm);
     font-weight: 400;
-    color: rgba(var(--primary-color-rgb), 0.8);
+    color: rgba(var(--primary-color-rgb), 0.85);
     letter-spacing: 0.05em;
 }
 
@@ -511,14 +563,8 @@ ul {
     padding: 0.75rem;
 }
 
-.question-value {
-    color: var(--font-color-yellow);
-    font-weight: 500;
-    margin-bottom: 0.5rem;
-}
-
 .stargate-img {
-    position: absolute;
+    position: fixed;
     top: 35%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -570,9 +616,17 @@ ul {
 
 .score-block {
     display: hidden;
-    min-width: 4rem;
+    min-width: 10rem;
     height: 3rem;
-    border: 1px solid rgba(var(--font-color-yellow-rgb), 0.5);
+    border: 1px solid;
+    border-image-slice: 1;
+    border-image-source: linear-gradient(
+        to left,
+        rgba(var(--font-color-yellow-rgb), 0.9) 0%,
+        rgba(var(--font-color-yellow-rgb), 0.6) 30%,
+        rgba(var(--font-color-yellow-rgb), 0.6) 70%,
+        rgba(var(--font-color-yellow-rgb), 0.9) 100%
+    );
     color: var(--font-color-yellow);
 }
 
@@ -667,8 +721,8 @@ ul {
     .stargate-img {
         top: 40%;
         left: 50%;
-        width: 71rem;   
-        height: 71rem;
+        width: 72rem;   
+        height: 72rem;
     }   
 }
 
