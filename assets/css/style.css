@@ -3,7 +3,7 @@
     --primary-bg-color: #0d1a2a;
     --secondary-bg-color: #111d33;
     --tertiary-bg-color: #152336;
-    --primary-gradient-color: #162436;
+    --primary-gradient-color: #162030;
     --secondary-gradient-color: #0e1828;
     --primary-color: #2487c9;
     --secondary-color: #204475;
@@ -27,16 +27,19 @@
 
     --stripe-top: repeating-linear-gradient(
         90deg,
-        rgba(var(--primary-color-rgb), 0.45) 0px,
-        rgba(var(--primary-color-rgb), 0.45) 4px,
-        transparent 4px,
-        transparent 8px
+        rgba(var(--tertiary-color-rgb), 0.65) 0px,
+        rgba(var(--tertiary-color-rgb), 0.65) 3px,
+        rgba(var(--font-color-yellow-rgb), 0.25) 3px,
+        rgba(var(--font-color-yellow-rgb), 0.25) 5px,
+        transparent 5px,
+        transparent 10px
     );
 
     --header-bg-gradient: linear-gradient(
         to bottom,
-        rgba(var(--secondary-color-rgb), 0.4),
-        transparent
+        rgba(var(--tertiary-color-rgb), 0.12) 0%,
+        rgba(var(--secondary-color-rgb), 0.2) 40%,
+        transparent 70%
     );
 
     --bg-gradient: linear-gradient(
@@ -45,10 +48,10 @@
         transparent
     );
 
-    --question-bg-gradient: linear-gradient(
-        to bottom,
-        rgba(var(--secondary-color-rgb), 0.3) 0%,
-        rgba(var(--secondary-color-rgb), 0.1) 40%,
+    --question-bg-gradient: radial-gradient(
+        ellipse 100% 60% at center top,
+        rgba(var(--tertiary-color-rgb), 0.15) 0%,
+        rgba(var(--secondary-color-rgb), 0.15) 40%,
         transparent 70%
     );
 
@@ -198,13 +201,13 @@ label {
 }
 
 .label-design {
-    background: rgba(var(--primary-color-rgb), 0.04);
+    background: rgba(var(--primary-color-rgb), 0.07);
     border: 1px solid rgba(var(--primary-color-rgb), 0.2);
     border-image: linear-gradient(
         to right,
-        rgba(var(--primary-color-rgb), 0.25) 20%,
+        rgba(var(--tertiary-color-rgb), 0.35) 20%,
         transparent 50%,
-        rgba(var(--primary-color-rgb), 0.25) 80%
+        rgba(var(--tertiary-color-rgb), 0.35) 80%
     ) 1;
     margin-bottom: 0.2rem;
 }
@@ -312,8 +315,8 @@ input[type="radio"] {
     min-width: 5rem;
     min-height: 2rem;
     color: var(--font-color-yellow);
+    border: 1px solid rgba(var(--tertiary-color-rgb), 0.45);
     background: transparent;
-    border: 1px solid rgba(var(--primary-color-rgb), 0.3);
     padding: 0.3rem 0.75rem;
     font-size: var(--font-size-xsm);
     font-family: var(--font-primary-family);
@@ -323,17 +326,17 @@ input[type="radio"] {
 }
 
 .position-btn:hover {
-    background: rgba(var(--primary-color-rgb), 0.1);
-    border-color: rgba(var(--primary-color-rgb), 0.5);
+    background: rgba(var(--font-color-yellow-rgb), 0.08);
+    border-color: rgba(var(--font-color-yellow-rgb), 0.65);
 }
 ul {
     list-style-type:none;
 }
 
 .trivia-block {
-    background: var(--secondary-bg-color);
+    background: #142438;
     background-image: var(--question-bg-gradient);
-    border: 1px solid var(--secondary-color);
+    border: 1px solid rgba(var(--tertiary-color-rgb), 0.3);
     padding: 1rem;
     margin-top: 1rem;
     font-family: var(--font-primary-family);
@@ -341,12 +344,12 @@ ul {
 
 .trivia-accent {
     height: 2px;
-    background: linear-gradient(to right, transparent, var(--primary-color), transparent);
+    background: var(--glow-line-cyan);
     margin-bottom: 10px;
 }
 
 .trivia-title {
-    color: var(--primary-color);
+    color: var(--tertiary-color);
     font-size: var(--font-size-xsm);
     letter-spacing: 0.08em;
     text-transform: uppercase;
@@ -364,8 +367,8 @@ ul {
 }
 
 .block1 {
-    background: var(--secondary-bg-color);
-    border: 1px solid rgba(var(--primary-color-rgb), 0.2);
+    background: #142438;
+    border: 1px solid rgba(var(--primary-color-rgb), 0.42);
     margin-bottom: 6px;
 }
 
@@ -418,14 +421,14 @@ ul {
     text-align: right;
     font-size: var(--font-size-xsm);
     font-weight: 400;
-    color: rgba(var(--primary-color-rgb), 0.75);
+    color: rgba(var(--primary-color-rgb), 0.8);
     letter-spacing: 0.05em;
 }
 
 .block1-btn {
     font-size: var(--font-size-xsm);
     color: var(--primary-color);
-    border: 1px solid rgba(var(--primary-color-rgb), 0.3);
+    border: 1px solid rgba(var(--primary-color-rgb), 0.35);
     padding: 0.3rem 0.75rem;
     background: transparent;
     letter-spacing: 0.1em;
@@ -438,8 +441,8 @@ ul {
 }
 
 .block2 {
-    background: var(--primary-bg-color);
-    border: 1px solid rgba(var(--primary-color-rgb), 0.15);
+    background: #142438;
+    border: 1px solid rgba(var(--primary-color-rgb), 0.42);
     padding: 0.4rem 0.75rem;
     display: flex;
     justify-content: center;
@@ -448,9 +451,9 @@ ul {
 
 #questionBlock {
     display: none;
-    background: var(--secondary-bg-color);
+    background: #142438;
     background-image: var(--question-bg-gradient);
-    border: 1px solid rgba(var(--primary-color-rgb), 0.3);
+    border: 1px solid rgba(var(--tertiary-color-rgb), 0.38);
     position: relative;
 }
 
@@ -475,13 +478,13 @@ ul {
 .question-bar {
     display: flex;
     align-items: center;
-    background: rgba(var(--tertiary-bg-color-rgb), 0.45);
-    border-bottom: 1px solid rgba(var(--primary-color-rgb), 0.2);
+    background: rgba(var(--tertiary-color-rgb), 0.12);
+    border-bottom: 1px solid rgba(var(--tertiary-color-rgb), 0.2);
 }
 
 .question-bar-tab {
-    background: rgba(var(--tertiary-color-rgb), 0.1);
-    border-right: 1px solid rgba(var(--tertiary-color-rgb), 0.25);
+    background: rgba(var(--tertiary-color-rgb), 0.12);
+    border-right: 1px solid rgba(var(--tertiary-color-rgb), 0.35);
     padding: 0.3rem 0.75rem;
     display: flex;
     align-items: center;
@@ -489,7 +492,7 @@ ul {
 }
 
 .question-bar-rune {
-    color: rgba(var(--tertiary-color-rgb), 0.75);
+    color: rgba(var(--tertiary-color-rgb), 0.5);
     font-size: 0.75rem;
 }
 
@@ -537,15 +540,12 @@ ul {
     height: 55rem;
     z-index: 0;
     pointer-events: none;
+    filter: drop-shadow(0 0 40px rgba(var(--tertiary-color-rgb), 0.2))
+            drop-shadow(0 0 80px rgba(var(--primary-color-rgb), 0.1));
 }
 
 .quiz-container {
-    background: radial-gradient(
-        ellipse 80% 65% at center,
-        rgba(var(--tertiary-bg-color-rgb), 0.5) 0%,
-        var(--tertiary-bg-color) 25%,
-        var(--primary-bg-color) 100%
-    );
+    background: radial-gradient(ellipse 80% 65% at center, #1a2c40 0%, #0e1a2c 100%);
     border-left: 2px solid rgba(var(--primary-color-rgb), 0.4);
     border-right: 2px solid rgba(var(--primary-color-rgb), 0.4);
     border-bottom: 2px solid rgba(var(--primary-color-rgb), 0.4);
@@ -555,14 +555,19 @@ ul {
 
 .quiz-container-top {
     height: 2px;
-    background: linear-gradient(to right, transparent, var(--font-color-yellow), transparent);
+     background: linear-gradient(
+        to right,
+        transparent,
+        rgba(var(--tertiary-color-rgb), 0.8),
+        transparent
+    );
 }
 
 .glyph-block {
     width: 3.6rem;
     aspect-ratio: 1;
-    background-color: var(--secondary-bg-color);
-    border: 1px solid var(--primary-color);
+    background-color: #142438;
+    border: 1px solid rgba(var(--tertiary-color-rgb), 0.35);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -572,11 +577,11 @@ ul {
     box-sizing: border-box;
     width: 100%;
     min-height: 3rem;
-    background-color: var(--primary-bg-color);
+    background-color: #142438;
 }
 
 .result-block:nth-child(even) {
-    background: rgba(var(--primary-color-rgb), 0.03);
+    background: rgba(var(--tertiary-color-rgb), 0.04);
 }
 
 .icon-block {
@@ -588,7 +593,8 @@ ul {
     display: hidden;
     min-width: 4rem;
     height: 3rem;
-    border: 1px solid var(--score-color);
+    border: 1px solid rgba(var(--font-color-yellow-rgb), 0.5);
+    color: var(--font-color-yellow);
 }
 
 .incorrect {
