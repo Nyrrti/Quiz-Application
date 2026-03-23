@@ -9,8 +9,7 @@ class Quiz {
     /**@type {number} */
     #questionOrder = [];
     
-    constructor(){
-        
+    constructor(){ 
     }
 
     /** This function returns the question based on id
@@ -30,7 +29,6 @@ class Quiz {
             return null;
     }
     
-     
     /** Return the questions based on the current shuffled questionOrder in a array
      * 
      * @returns The shuffled order of ids
@@ -175,7 +173,7 @@ class Quiz {
     length() {
        return this.#questions.length;
     }
-    
+
     /**
      * 
      * @returns {number} The current position in the question order

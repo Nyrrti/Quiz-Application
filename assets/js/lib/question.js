@@ -1,14 +1,24 @@
 // Question class, anything about a single question.
 class Question {
+        /** @type {number} */
         #id = 0;
+        /** @type {string} */
         #title = "";
+        /** @type {string[]} */
         #answers = [];
+        /** @type {string} */
         #correctAnswer = "";
+        /** @type {boolean} */
         #isAnswered = false;
+        /** @type {boolean} */
         #wasCorrect = false;
+        /** @type {boolean} */
         #isExpired = false;
+        /** @type {string} */
         #selectedAnswer = "";
+        /** @type {string} */
         #answerTrivia = "";
+        /** @type {string[]} */
         #lockedLetters = [];
     // Attributes - what it has
     constructor(id, title, answers, correctAnswer, isAnswered, wasCorrect, isExpired, selectedAnswer, answerTrivia) {
@@ -24,10 +34,10 @@ class Question {
         this.#answerTrivia = answerTrivia;
     }
     
-    /**
-     * Check if the selected answer is correct
+    /** Check if the selected answer is correct
+     * 
      * @param {string} selectedAnswer the answer the user picked
-     * @returns 
+     * @returns Returns boolean based on correct or incorrect answer
      */
     checkAnswer(selectedAnswer){
         if (selectedAnswer === this.#correctAnswer) {
@@ -42,24 +52,6 @@ class Question {
         }
     }
 
-    // /**
-    //  * 
-    //  * @param {Question} currentQuestion Gets the current question object
-    //  * @returns 
-    //  */
-    // checkIfAnswered() {
-    //     // If no answer selected and timeranout = false give errormessage
-    //     if (!currentQuestion.this.#isAnswered && currentQuestion.this.#ranOutTime) {
-    //         console.log("Was not answered or Timer didnt run out");
-    //         renderQuiz.displayError();
-
-    //         return;
-    //     }
-    //     else {
-    //         console.log("Went to else in CheckifAnswered")
-    //     }
-    // }
-
     reset() {
         this.#isAnswered = false;
         this.#wasCorrect = false;
@@ -67,8 +59,8 @@ class Question {
         this.#lockedLetters = [];
     }
     
-    /**
-     * Create question object into JSON
+    /** Create question object into JSON
+     * 
      * @returns {JSON} 
      */
     createJson() {
@@ -184,6 +176,5 @@ class Question {
     set isExpired(value) {
         this.#isExpired = value;
     }
-  
 }
 
