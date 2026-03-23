@@ -1,10 +1,11 @@
 
 :root {
     --primary-bg-color: #0d1a2a;
-    --secondary-bg-color: #111d33;
-    --tertiary-bg-color: #152336;
+    --secondary-bg-color: #142438;
     --primary-gradient-color: #162030;
     --secondary-gradient-color: #0e1828;
+    --container-gradient-light: #1a2c40;
+    --container-gradient-dark: #0e1a2c;
     --primary-color: #2487c9;
     --secondary-color: #204475;
     --tertiary-color: #069fe6;
@@ -17,7 +18,6 @@
     --font-color-yellow: #ffc964;
     --font-color-blue: #069fe6;
     
-    --tertiary-bg-color-rgb: 14, 26, 46;
     --primary-color-rgb: 36, 135, 201;
     --secondary-color-rgb: 32, 68, 117;
     --tertiary-color-rgb: 6, 159, 230;
@@ -42,24 +42,11 @@
         transparent 70%
     );
 
-    --bg-gradient: linear-gradient(
-        to bottom,
-        rgba(var(--secondary-color-rgb), 0.4),
-        transparent
-    );
-
     --question-bg-gradient: radial-gradient(
         ellipse 100% 60% at center top,
         rgba(var(--tertiary-color-rgb), 0.15) 0%,
         rgba(var(--secondary-color-rgb), 0.15) 40%,
         transparent 70%
-    );
-
-    --bg-gradient-2: radial-gradient(
-        ellipse 70% 50% at center top,
-        rgba(var(--primary-color-rgb), 0.2) 0%,
-        rgba(var(--secondary-color-rgb), 0.2) 70%,
-        transparent 100%
     );
 
     --bg-crosshatch:
@@ -334,7 +321,7 @@ ul {
 }
 
 .trivia-block {
-    background: #142438;
+    background: var(--secondary-bg-color);
     background-image: var(--question-bg-gradient);
     border: 1px solid rgba(var(--tertiary-color-rgb), 0.3);
     padding: 1rem;
@@ -367,7 +354,7 @@ ul {
 }
 
 .block1 {
-    background: #142438;
+    background: var(--secondary-bg-color);
     border: 1px solid rgba(var(--primary-color-rgb), 0.42);
     margin-bottom: 6px;
 }
@@ -441,7 +428,7 @@ ul {
 }
 
 .block2 {
-    background: #142438;
+    background: var(--secondary-bg-color);
     border: 1px solid rgba(var(--primary-color-rgb), 0.42);
     padding: 0.4rem 0.75rem;
     display: flex;
@@ -451,7 +438,7 @@ ul {
 
 #questionBlock {
     display: none;
-    background: #142438;
+    background: var(--secondary-bg-color);
     background-image: var(--question-bg-gradient);
     border: 1px solid rgba(var(--tertiary-color-rgb), 0.38);
     position: relative;
@@ -540,12 +527,10 @@ ul {
     height: 55rem;
     z-index: 0;
     pointer-events: none;
-    filter: drop-shadow(0 0 40px rgba(var(--tertiary-color-rgb), 0.2))
-            drop-shadow(0 0 80px rgba(var(--primary-color-rgb), 0.1));
 }
 
 .quiz-container {
-    background: radial-gradient(ellipse 80% 65% at center, #1a2c40 0%, #0e1a2c 100%);
+    background: radial-gradient(ellipse 80% 65% at center, var(--container-gradient-light) 0%, var(--container-gradient-dark) 100%);
     border-left: 2px solid rgba(var(--primary-color-rgb), 0.4);
     border-right: 2px solid rgba(var(--primary-color-rgb), 0.4);
     border-bottom: 2px solid rgba(var(--primary-color-rgb), 0.4);
@@ -566,7 +551,7 @@ ul {
 .glyph-block {
     width: 3.6rem;
     aspect-ratio: 1;
-    background-color: #142438;
+    background-color: var(--secondary-bg-color);
     border: 1px solid rgba(var(--tertiary-color-rgb), 0.35);
     display: flex;
     justify-content: center;
@@ -577,7 +562,7 @@ ul {
     box-sizing: border-box;
     width: 100%;
     min-height: 3rem;
-    background-color: #142438;
+    background-color: var(--secondary-bg-color);
 }
 
 .result-block:nth-child(even) {
