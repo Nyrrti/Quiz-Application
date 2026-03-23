@@ -31,7 +31,7 @@ class Quiz {
     
     /** Return the questions based on the current shuffled questionOrder in a array
      * 
-     * @returns The shuffled order of ids
+     * @returns {Question[]} The shuffled order of ids
      */
     getOrderedQuestions() {
         let orderedQuestions = [];
@@ -58,7 +58,7 @@ class Quiz {
 
     /** Load in JSON string
      * 
-     * @param {string} dataQuestions loop through the json data and create new questions with the class Question
+     * @param {Object[]} dataQuestions loop through the json data and create new questions with the class Question
      */
     loadData(dataQuestions){
         for (let i = 0; i < dataQuestions.length; i++) {

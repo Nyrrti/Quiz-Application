@@ -61,7 +61,7 @@ class Question {
     
     /** Create question object into JSON
      * 
-     * @returns {JSON} 
+     * @returns {object} 
      */
     createJson() {
         const question = {

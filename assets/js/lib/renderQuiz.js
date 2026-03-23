@@ -10,8 +10,7 @@ class RenderQuiz {
      * 
      * @param {Question} currentQuestion 
      */
-    constructor(currentQuestion) {
-        this.#currentQuestion = currentQuestion;
+    constructor() {  
     }
 
     /** Renders the question and its answers on the screen
@@ -335,6 +334,7 @@ class RenderQuiz {
         } 
     }
     
+    /** Disables all radio inputs for the current question */
     lockAnswer() {
     const checkedButton = document.getElementsByName('question');
         // Loop through the radiobuttons to see which one is checked
@@ -373,7 +373,7 @@ class RenderQuiz {
 
     /** Return the questions based on the current shuffled questionOrder in a array
      * 
-     * @param {number[]} orderedQuestion The order of the questions in questionorder
+     * @param {Question[]} orderedQuestion The order of the questions in questionorder
      */
     displayEndResult(orderedQuestion) {
         const container = document.getElementById("addResult");
