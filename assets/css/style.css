@@ -310,41 +310,6 @@ input[type="radio"] {
     opacity: 0;
 }
 
-.iris {
-    background-color: red;
-}
-
-.iris-overlay {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 10;
-    animation: iris-close 0.6s ease-in forwards;
-    pointer-events: none;
-}
-
-.iris-msg {
-    font-size: var(--font-size-xsm);
-    color: rgba(var(--error-color-rgb), 0.9);
-    letter-spacing: 0.25em;
-    text-transform: uppercase;
-    font-family: var(--font-primary-family);
-    opacity: 0;
-    animation: iris-text 0.3s ease-in 0.5s forwards;
-}
-
-@keyframes iris-close {
-    0%   { background: transparent; }
-    100% { background: rgba(var(--primary-bg-color-rgb), 0.75); }
-}
-
-@keyframes iris-text {
-    0%   { opacity: 0; }
-    100% { opacity: 1; }
-}
-
 .position-btn {
     min-width: 5rem;
     min-height: 2rem;
@@ -694,6 +659,37 @@ ul {
     border-width: 1px;
     border-image-source: linear-gradient(to left, var(--score-color), var(--font-color-yellow), var(--score-color));
     color: var(--score-color);
+}
+
+.iris-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    animation: iris-close 0.6s ease-in forwards;
+    pointer-events: none;
+}
+
+.iris-msg {
+    font-size: var(--font-size-sm);
+    color: rgba(var(--error-color-rgb), 0.9);
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    font-family: var(--font-primary-family);
+    opacity: 0;
+    animation: iris-text 0.3s ease-in 0.5s forwards;
+}
+
+@keyframes iris-close {
+    0%   { background: transparent; }
+    100% { background: rgba(var(--primary-bg-color-rgb), 0.75); }
+}
+
+@keyframes iris-text {
+    0%   { opacity: 0; }
+    100% { opacity: 1; }
 }
 
 /* Extra small devices (phones, 600px and down) */

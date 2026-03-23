@@ -17,13 +17,14 @@ class RenderQuiz {
     renderQuestion(question) {
         // Remove iris overlay at new question
         document.getElementById("iris-overlay")?.remove();
+        
         const questionBlock = document.getElementById("questionBlock");
         questionBlock.style.display = "block";
         questionBlock.innerHTML = "";
         questionBlock.classList.add("question-block");
 
-        console.log(question.id, question.lockedLetters);
-        console.log("Questionorder = " + quiz.questionOrder);
+        // console.log(question.id, question.lockedLetters);
+        // console.log("Questionorder = " + quiz.questionOrder);
         this.#currentQuestion = question;
 
         // bc for corners
@@ -43,7 +44,7 @@ class RenderQuiz {
         const questionValue = document.createElement("h5");
         questionValue.id = "questionValue";
         questionValue.className = "title";
-
+        // Error message container
         const errorMsg = document.createElement("h5");
         errorMsg.id = "errorMsg";
         errorMsg.className = "error text-center";
@@ -76,6 +77,10 @@ class RenderQuiz {
         // Display the locked letters when a question was answered
         if (question.isAnswered) {
             this.displayLockedLetters(question.lockedLetters); 
+        }
+
+        if (question.isExpired) {
+            this.displayIrisOverlay();
         }
         
         // Create Radiobuttons for the answers
@@ -145,29 +150,6 @@ class RenderQuiz {
         triviaContainer.appendChild(this.createTriviaBlock(text));
     }
 
-
-    // addTrivia() {
-    //     const triviaContainer = document.getElementById("trivia");
-    //     const text = this.#currentQuestion.answerTrivia;
-    //     const triviaTitle = document.createElement("h5");
-    //     triviaTitle.className = "light my-1";
-    //     triviaTitle.innerText = "Trivia";
-    //     triviaContainer.appendChild(triviaTitle);
-    //     // split full text into sentence that end with .
-    //     const sentences = text.split(". ");
-
-    //     for (let i = 0; i < sentences.length; i++) {
-    //         // get the sentences and reapply a .
-    //         const sentence = sentences[i].trim() + ".";
-    //         console.log(sentence);
-
-    //         const p = document.createElement("p");
-    //         p.className = "light my-3";
-    //         p.textContent = sentence;
-    //         triviaContainer.appendChild(p);
-    //     }
-    // }
-
     createTriviaBlock(text) {
         // outer container
         const triviaBox = document.createElement("div");
@@ -195,7 +177,6 @@ class RenderQuiz {
 
         return triviaBox;
     }
-
 
     // clearTrivia() {
     //     document.getElementById("trivia").innerText = "";
@@ -535,7 +516,6 @@ class RenderQuiz {
      * @param {string[]} lockedLetters The letters that the timer saves per question in a array
      */
     displayLockedLetters(lockedLetters) {
-        console.log(lockedLetters);
         if (this.#quizTimer) {
             // Reset the timer
             this.#quizTimer.reset();

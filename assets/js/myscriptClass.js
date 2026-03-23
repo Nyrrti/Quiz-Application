@@ -131,8 +131,14 @@ previousButton.addEventListener("click", function() {
         renderQuiz.displayError();
         return;
     }
+
     // Move back to the previous question and save the question data.
     const question = quiz.previousQuestion();
+
+    if(question.isExpired) {
+        renderQuiz.displayIrisOverlay;
+    }
+
     // Display the lockedletters saved in array
     renderQuiz.displayLockedLetters(question.lockedLetters);
     // Clear the current trivia
